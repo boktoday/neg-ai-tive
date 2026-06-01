@@ -46,7 +46,41 @@ export default function Newsletter() {
 
   return (
     <section className="relative py-24 overflow-hidden">
+      {/* Background — Chatbot Data Streams / Conversation Traffic */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-gold-950/20 to-[#0a0a0a]" />
+
+      {/* Vertical data streams — chatbot conversations flowing */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {['01', '10', 'AI', '??', '!!', '::', '{}', '<>', '()', '&&', '||', 'OK', 'NO', '??', '??'].map((chars, i) => (
+          <div
+            key={i}
+            className="absolute text-[7px] font-mono text-gold-500/15"
+            style={{
+              left: (i * 7 + 3) + '%',
+              top: '0',
+              writingMode: 'vertical-rl',
+              animation: `fadeIn ${Math.random() * 8 + 5}s ease-in-out infinite`,
+              animationDelay: (i * 0.5) + 's',
+              transform: 'rotate(180deg)',
+            }}
+          >
+            {Array(30).fill(chars).join(' ')}
+          </div>
+        ))}
+      </div>
+
+      {/* Chat bubbles */}
+      <div className="absolute bottom-[15%] left-[5%] w-[80px] h-[80px] rounded-full border border-gold-500/10 animate-[float_6s_ease-in-out_infinite]" />
+      <div className="absolute bottom-[20%] left-[12%] w-[50px] h-[50px] rounded-full border border-gold-500/8 animate-[float_8s_ease-in-out_infinite_1s]" />
+      <div className="absolute top-[20%] right-[10%] w-[60px] h-[60px] rounded-full border border-gold-500/10 animate-[float_7s_ease-in-out_infinite_2s]" />
+
+      {/* Response typing indicator */}
+      <div className="absolute top-[50%] right-[5%] flex gap-1 opacity-10">
+        <div className="w-2 h-2 rounded-full bg-gold-500 animate-bounce" />
+        <div className="w-2 h-2 rounded-full bg-gold-500 animate-bounce" style={{ animationDelay: '0.2s' }} />
+        <div className="w-2 h-2 rounded-full bg-gold-500 animate-bounce" style={{ animationDelay: '0.4s' }} />
+      </div>
+
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[1px] bg-gradient-to-r from-transparent via-red-500/20 to-transparent" />
 
       <div className="relative max-w-4xl mx-auto px-4">

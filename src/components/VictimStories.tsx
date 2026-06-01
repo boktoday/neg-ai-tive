@@ -60,8 +60,39 @@ const stories = [
 export default function VictimStories() {
   return (
     <section id="stories" className="relative py-24 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 hero-gradient" />
+      {/* Background — Algorithmic Angst / Echo Chambers */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-purple-950/10 to-[#0a0a0a]" />
+
+      {/* Concentric rings — filter bubbles / echo chambers */}
+      <div className="absolute top-[10%] right-[5%] w-[300px] h-[300px]">
+        <div className="absolute inset-0 border border-purple-500/10 rounded-full animate-[spin_20s_linear_infinite]" />
+        <div className="absolute inset-[30px] border border-purple-500/8 rounded-full animate-[spin_25s_linear_infinite_reverse]" />
+        <div className="absolute inset-[60px] border border-fuchsia-500/6 rounded-full animate-[spin_30s_linear_infinite]" />
+        <div className="absolute inset-[100px] w-[100px] h-[100px] bg-purple-500/5 rounded-full blur-[20px]" />
+      </div>
+      <div className="absolute bottom-[15%] left-[8%] w-[200px] h-[200px]">
+        <div className="absolute inset-0 border border-fuchsia-500/10 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
+        <div className="absolute inset-[25px] border border-purple-500/8 rounded-full animate-[spin_20s_linear_infinite]" />
+        <div className="absolute inset-[70px] w-[60px] h-[60px] bg-fuchsia-500/5 rounded-full blur-[15px]" />
+      </div>
+
+      {/* Floating polarization dots */}
+      {Array.from({ length: 15 }, (_, i) => (
+        <div
+          key={i}
+          className="absolute rounded-full"
+          style={{
+            width: (Math.random() * 4 + 1) + 'px',
+            height: (Math.random() * 4 + 1) + 'px',
+            left: Math.random() * 100 + '%',
+            top: Math.random() * 100 + '%',
+            background: i % 2 === 0 ? 'rgba(168, 85, 247, 0.15)' : 'rgba(217, 70, 239, 0.1)',
+            animation: `float ${Math.random() * 8 + 8}s ease-in-out infinite`,
+            animationDelay: Math.random() * 5 + 's',
+          }}
+        />
+      ))}
+
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[1px] bg-gradient-to-r from-transparent via-red-500/20 to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-4">

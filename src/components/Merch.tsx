@@ -104,7 +104,45 @@ const products = [
 export default function Merch() {
   return (
     <section id="merch" className="relative py-24 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-gray-900/30 to-[#0a0a0a]" />
+      {/* Background — Engagement / Dopamine Hooks / Variable Rewards */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-emerald-950/15 to-[#0a0a0a]" />
+
+      {/* Streak counter — like Duolingo */}
+      <div className="absolute top-[8%] right-[10%] flex items-center gap-1 opacity-[0.08]">
+        {[1,2,3,4,5,6,7].map((day) => (
+          <div key={day} className={`w-4 h-8 rounded-sm ${day <= 3 ? 'bg-emerald-500' : 'bg-gray-700'}`}
+            style={{ animation: day <= 3 ? 'pulse 2s ease-in-out infinite' : 'none', animationDelay: day * 0.3 + 's' }} />
+        ))}
+      </div>
+
+      {/* Variable reward sparkles — random dopamine hits */}
+      {Array.from({ length: 20 }, (_, i) => (
+        <div
+          key={i}
+          className="absolute text-[10px] pointer-events-none"
+          style={{
+            left: Math.random() * 100 + '%',
+            top: Math.random() * 100 + '%',
+            opacity: Math.random() * 0.15 + 0.02,
+            animation: `fadeIn ${Math.random() * 3 + 2}s ease-in-out infinite`,
+            animationDelay: Math.random() * 5 + 's',
+          }}
+        >
+          {['✨', '⭐', '🔥', '💎', '🏆', '🎯', '🌟'][Math.floor(Math.random() * 7)]}
+        </div>
+      ))}
+
+      {/* Progress bar — gamification */}
+      <div className="absolute bottom-[10%] left-[8%] w-[200px] h-[3px] bg-gray-800 rounded-full overflow-hidden opacity-[0.08]">
+        <div className="h-full bg-gradient-to-r from-emerald-500 to-gold-500 rounded-full animate-[shimmer_3s_linear_infinite]"
+          style={{ width: '67%' }} />
+      </div>
+      <div className="absolute bottom-[13%] left-[8%] text-[8px] text-emerald-500/10 font-mono">LEVEL 13 — 67% COMPLETE</div>
+
+      {/* Notification dots — FOMO */}
+      <div className="absolute top-[15%] left-[5%] w-3 h-3 bg-red-500/15 rounded-full animate-pulse" />
+      <div className="absolute top-[18%] left-[8%] w-2 h-2 bg-red-500/10 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
+
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[1px] bg-gradient-to-r from-transparent via-red-500/20 to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-4">
