@@ -67,36 +67,7 @@ export default function StorySubmission() {
 
   return (
     <section id="submit" className="relative py-24 overflow-hidden">
-      {/* Background — Deepfake Glitch / Surveillance */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-red-950/20 to-[#0a0a0a]" />
-
-      {/* Scan lines — like corrupted video */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
-        <div className="absolute w-full h-[1px] bg-gradient-to-r from-transparent via-red-400/30 to-transparent" style={{ top: '15%', animation: 'shimmer 4s linear infinite' }} />
-        <div className="absolute w-full h-[1px] bg-gradient-to-r from-transparent via-red-400/20 to-transparent" style={{ top: '35%', animation: 'shimmer 6s linear infinite', animationDelay: '1s' }} />
-        <div className="absolute w-full h-[1px] bg-gradient-to-r from-transparent via-red-400/15 to-transparent" style={{ top: '55%', animation: 'shimmer 5s linear infinite', animationDelay: '2s' }} />
-        <div className="absolute w-full h-[1px] bg-gradient-to-r from-transparent via-red-400/20 to-transparent" style={{ top: '75%', animation: 'shimmer 7s linear infinite', animationDelay: '0.5s' }} />
-      </div>
-
-      {/* Glitch blocks — random corrupted pixels */}
-      {[{ top: '20%', left: '10%', w: 40, h: 2, delay: '0s' },
-        { top: '50%', left: '75%', w: 60, h: 1, delay: '2s' },
-        { top: '80%', left: '25%', w: 30, h: 3, delay: '4s' },
-        { top: '35%', left: '85%', w: 50, h: 1, delay: '1s' },
-        { top: '65%', left: '5%', w: 45, h: 2, delay: '3s' },
-      ].map((g, i) => (
-        <div key={i} className="absolute bg-gradient-to-r from-transparent via-red-500/10 to-transparent"
-          style={{ top: g.top, left: g.left, width: g.w + 'px', height: g.h + 'px', animation: 'glitch 1.5s infinite', animationDelay: g.delay }} />
-      ))}
-
-      {/* Deepfake eye — watching */}
-      <div className="absolute top-[25%] right-[8%] w-[120px] h-[120px]">
-        <div className="absolute inset-0 border border-red-500/10 rounded-full animate-[spin_10s_linear_infinite]" />
-        <div className="absolute inset-[15px] border border-red-500/8 rounded-full animate-[spin_8s_linear_infinite_reverse]" />
-        <div className="absolute inset-[35px] border border-gold-500/6 rounded-full animate-[spin_6s_linear_infinite]" />
-        <div className="absolute inset-[50px] w-[20px] h-[20px] bg-red-500/15 rounded-full blur-[8px]" />
-      </div>
-
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[1px] bg-gradient-to-r from-transparent via-gold-500/20 to-transparent" />
 
       <div className="relative max-w-4xl mx-auto px-4">
