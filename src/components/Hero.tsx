@@ -1,48 +1,135 @@
 import { AlertTriangle, ArrowDown, Sparkles } from 'lucide-react';
 
-const particles = Array.from({ length: 20 }, (_, i) => ({
-  id: i,
-  size: Math.random() * 4 + 1,
-  x: Math.random() * 100,
-  y: Math.random() * 100,
-  duration: Math.random() * 10 + 10,
-  delay: Math.random() * 5,
-  opacity: Math.random() * 0.3 + 0.1,
-}));
-
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
-      {/* Ambient particles */}
-      {particles.map((p) => (
+      {/* ====== BACKGROUND CANVAS — reflects all 9 issue briefs ====== */}
+
+      {/* 1. DATA CENTRE GRID — server rack lines + pulsing nodes */}
+      <div
+        className="absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '40px 40px',
+        }}
+      />
+
+      {/* 2. NEURAL NETWORK NODES — floating data packets */}
+      {Array.from({ length: 40 }, (_, i) => (
         <div
-          key={p.id}
-          className="absolute rounded-full bg-red-500/20"
+          key={i}
+          className="absolute rounded-full"
           style={{
-            width: p.size + 'px',
-            height: p.size + 'px',
-            left: p.x + '%',
-            top: p.y + '%',
-            opacity: p.opacity,
-            animation: `float ${p.duration}s ease-in-out ${p.delay}s infinite`,
+            width: (Math.random() * 3 + 1) + 'px',
+            height: (Math.random() * 3 + 1) + 'px',
+            left: Math.random() * 100 + '%',
+            top: Math.random() * 100 + '%',
+            background: i % 3 === 0
+              ? 'rgba(239, 68, 68, 0.4)'
+              : i % 3 === 1
+                ? 'rgba(245, 158, 11, 0.3)'
+                : 'rgba(59, 130, 246, 0.2)',
+            animation: `drift ${Math.random() * 30 + 20}s linear infinite`,
+            animationDelay: Math.random() * 10 + 's',
           }}
         />
       ))}
 
-      {/* Gradient orbs */}
-      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-red-600/10 rounded-full blur-[120px] animate-pulse-slow" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-gold-500/10 rounded-full blur-[120px] animate-pulse-slow" style={{ animationDelay: '2s' }} />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-br from-red-600/5 via-transparent to-gold-500/5 rounded-full blur-[150px]" />
+      {/* 3. SURVEILLANCE EYE / ALGORITHM WATCHER — rotating rings */}
+      <div className="absolute top-[15%] right-[10%] w-[180px] h-[180px] opacity-[0.08]">
+        <div className="absolute inset-0 border border-red-500/30 rounded-full animate-[spin_8s_linear_infinite]" />
+        <div className="absolute inset-[20px] border border-gold-500/20 rounded-full animate-[spin_12s_linear_infinite_reverse]" />
+        <div className="absolute inset-[40px] border border-blue-500/15 rounded-full animate-[spin_16s_linear_infinite]" />
+        <div className="absolute inset-[75px] w-[30px] h-[30px] bg-red-500/20 rounded-full blur-[6px]" />
+      </div>
 
-      {/* Grid overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px',
-        }}
-      />
+      {/* 4. DEEPFAKE GLITCH LINES — horizontal scan artifacts */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div
+          className="absolute w-full h-[2px] bg-gradient-to-r from-transparent via-red-500/10 to-transparent"
+          style={{
+            top: '25%',
+            animation: 'shimmer 3s linear infinite',
+            animationDelay: '0s',
+          }}
+        />
+        <div
+          className="absolute w-full h-[1px] bg-gradient-to-r from-transparent via-gold-500/8 to-transparent"
+          style={{
+            top: '60%',
+            animation: 'shimmer 5s linear infinite',
+            animationDelay: '1s',
+          }}
+        />
+        <div
+          className="absolute w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500/5 to-transparent"
+          style={{
+            top: '80%',
+            animation: 'shimmer 4s linear infinite',
+            animationDelay: '2s',
+          }}
+        />
+      </div>
 
+      {/* 5. CHATBOT DATA STREAMS — vertical crawling code */}
+      <div className="absolute top-0 right-[5%] w-[1px] h-full bg-gradient-to-b from-transparent via-gold-500/5 to-transparent opacity-40"
+        style={{ animation: 'float 6s ease-in-out infinite' }} />
+      <div className="absolute top-0 left-[12%] w-[1px] h-full bg-gradient-to-b from-transparent via-red-500/5 to-transparent opacity-30"
+        style={{ animation: 'float 8s ease-in-out infinite 1s' }} />
+      <div className="absolute top-0 left-[35%] w-[1px] h-full bg-gradient-to-b from-transparent via-blue-500/4 to-transparent opacity-25"
+        style={{ animation: 'float 10s ease-in-out infinite 2s' }} />
+
+      {/* 6. EROSION / CORRUPTION — jagged glitch blocks */}
+      {[
+        { top: '12%', left: '8%', w: 60, h: 1, delay: '0s' },
+        { top: '45%', left: '75%', w: 80, h: 1, delay: '2s' },
+        { top: '70%', left: '20%', w: 40, h: 1, delay: '4s' },
+        { top: '30%', left: '85%', w: 50, h: 1, delay: '1s' },
+        { top: '55%', left: '5%', w: 70, h: 1, delay: '3s' },
+      ].map((g, i) => (
+        <div
+          key={i}
+          className="absolute bg-gradient-to-r from-transparent via-red-500/8 to-transparent"
+          style={{
+            top: g.top,
+            left: g.left,
+            width: g.w + 'px',
+            height: g.h + 'px',
+            animation: `glitch 1s infinite`,
+            animationDelay: g.delay,
+          }}
+        />
+      ))}
+
+      {/* 7. ORBS — one for each major theme */}
+      <div className="absolute top-[20%] left-[20%] w-[400px] h-[400px] bg-red-600/8 rounded-full blur-[100px] animate-pulse-slow" />
+      <div className="absolute bottom-[20%] right-[20%] w-[350px] h-[350px] bg-gold-500/6 rounded-full blur-[100px] animate-pulse-slow" style={{ animationDelay: '2s' }} />
+      <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-red-600/4 via-transparent to-blue-600/4 rounded-full blur-[120px]" />
+
+      {/* 8. MATRIX RAIN — subtle code characters */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {['01', '10', 'AI', '??', '!!', '00', '11', '::', '{}', '[]', '<>', '()', '&&', '||'].map((chars, i) => (
+          <div
+            key={i}
+            className="absolute text-[8px] font-mono text-gold-500/10"
+            style={{
+              left: (i * 7.5 + 2) + '%',
+              top: '-5%',
+              writingMode: 'vertical-rl',
+              animation: `fadeIn ${Math.random() * 4 + 3}s ease-in-out infinite`,
+              animationDelay: (i * 0.4) + 's',
+              transform: `rotate(180deg)`,
+            }}
+          >
+            {Array(20).fill(chars).join(' ')}
+          </div>
+        ))}
+      </div>
+
+      {/* ====== CONTENT ====== */}
       <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
         {/* Badge */}
         <div className="mb-8 animate-fade-in">
@@ -65,8 +152,8 @@ export default function Hero() {
         </div>
 
         {/* Heading */}
-        <h1 className="text-7xl md:text-8xl lg:text-[10rem] font-black leading-none mb-6 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-          <span className="block text-gradient drop-shadow-[0_0_40px_rgba(239,68,68,0.3)]">
+        <h1 className="text-7xl md:text-8xl lg:text-[10rem] font-black leading-none mb-6 animate-fade-in-up drop-shadow-[0_0_60px_rgba(239,68,68,0.2)]" style={{ animationDelay: '0.3s' }}>
+          <span className="block text-gradient">
             NEG-AI-TIVE
           </span>
         </h1>
@@ -85,7 +172,7 @@ export default function Hero() {
         >
           Artists replaced. Writers ghosted. Coders obsolete. Marketers buried in spam.
           <span className="block mt-1 text-gold-400/80 font-semibold">
-            The negative effects of AI are real. Here's the evidence..
+            The negative effects of AI are real. Here's the evidence.
           </span>
         </p>
 
@@ -106,7 +193,7 @@ export default function Hero() {
             href="#submit"
             className="group relative px-8 py-4 glass glass-hover text-white font-bold text-lg rounded-xl transition-all duration-500 hover:scale-105 border-gold-500/30 hover:border-gold-500/60"
           >
-            <span className="relative z-10">Share Your Trauma</span>
+            Share Your Trauma
           </a>
           <a
             href="https://aiorchestrator.com.au"
