@@ -81,7 +81,7 @@ export default function Copyright() {
           <a href="/" className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-300 transition-colors">
             <ArrowLeft className="w-4 h-4" />
             <span className="font-black">
-              <span className="text-red-500">SCREWED</span> <span className="text-gold-400">BY AI</span>
+              <span className="text-red-500">NEG-AI-TIVE</span>
             </span>
           </a>
         </div>

@@ -67,10 +67,7 @@ export default function Hero() {
         {/* Heading */}
         <h1 className="text-7xl md:text-8xl lg:text-[10rem] font-black leading-none mb-6 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
           <span className="block text-gradient drop-shadow-[0_0_40px_rgba(239,68,68,0.3)]">
-            SCREWED
-          </span>
-          <span className="block text-gradient-gold mt-2 drop-shadow-[0_0_40px_rgba(245,158,11,0.3)]">
-            BY AI
+            NEG-AI-TIVE
           </span>
         </h1>
 
@@ -117,7 +114,7 @@ export default function Hero() {
             rel="noopener noreferrer"
             className="group relative px-8 py-4 bg-white/5 border border-white/10 text-white font-bold text-lg rounded-xl transition-all duration-500 hover:scale-105 hover:bg-white/10"
           >
-            Get Unscrewed
+            Get Evidence
           </a>
         </div>
 
